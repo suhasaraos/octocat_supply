@@ -30,8 +30,8 @@ erDiagram
 
 ### Prerequisites
 
-- Node.js 18+ and npm
-- Make
+- Node.js 20.19+ and npm (Node.js 22.13 is recommended; see `.nvmrc`)
+- Make when using the Makefile workflow (Git Bash or WSL on Windows)
 
 ### Quick Start
 
@@ -49,7 +49,27 @@ erDiagram
    make dev
    ```
 
-This will start both the API server (on port 3000) and the frontend development server (on port 5173).
+This starts the API on port 3000 and the frontend on port 5137.
+
+#### Windows PowerShell
+
+If GNU Make is not installed, use the equivalent npm commands from the repository root:
+
+```powershell
+npm --prefix api install
+npm --prefix frontend install
+```
+
+Then start each service in a separate PowerShell terminal:
+
+```powershell
+npm --prefix api run dev
+```
+
+```powershell
+$env:VITE_API_URL = 'http://localhost:3000'
+npm --prefix frontend run dev
+```
 
 ### Available Make Commands
 
